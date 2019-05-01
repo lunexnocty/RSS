@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import Header from "./header";
 import Footer from "./footer";
+import Sidebar from "./sidebar";
 const GlobalStyle = createGlobalStyle`
 html,
 body {
@@ -34,7 +35,7 @@ a {
 `;
 
 const PageMain = styled.main`
-  width: 100%; //calc(100% - 300px);
+  flex-grow: 1;
 `;
 const Flex = styled.div`
   display: flex;
@@ -55,6 +56,7 @@ export default function Layout({ children }: any) {
       <Top>
         <Header />
         <Flex>
+          <Sidebar />
           <PageMain>{children}</PageMain>
         </Flex>
       </Top>

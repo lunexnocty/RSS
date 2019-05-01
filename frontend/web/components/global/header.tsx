@@ -13,8 +13,8 @@ const HeaderName = styled.span`
 export default function GlobalHeader() {
   return (
     <HeaderWrapper>
-      <Link>
-        <a href="/">
+      <Link href="/">
+        <a>
           <HeaderName>放射源管理系统</HeaderName>
         </a>
       </Link>

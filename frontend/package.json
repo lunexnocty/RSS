@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "license": "Apache-2.0",
   "scripts": {
+    "dev/web": "cd web && yarn dev",
+    "dev/mobile": "cd mobile && yarn dev",
     "lint": "eslint '{web,mobile,shared}/**/*.{js,ts,tsx}' --fix",
     "lint/web": "eslint 'web/**/*.{js,ts,tsx}' --fix",
     "lint/shared": "eslint 'shared/**/*.{js,ts,tsx}' --fix",
