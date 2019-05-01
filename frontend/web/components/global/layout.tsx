@@ -1,7 +1,7 @@
-import styled, { createGlobalStyle } from "styled-components";
-import Header from "./header";
-import Footer from "./footer";
-import Sidebar from "./sidebar";
+import styled, { createGlobalStyle } from 'styled-components'
+import Header from './header'
+import Footer from './footer'
+import Sidebar from './sidebar'
 const GlobalStyle = createGlobalStyle`
 html,
 body {
@@ -32,22 +32,22 @@ a {
   justify-content: space-between;
 }
 
-`;
+`
 
 const PageMain = styled.main`
   flex-grow: 1;
-`;
+`
 const Flex = styled.div`
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
-`;
+`
 
 const Top = styled.div`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-`;
+`
 
 export default function Layout({ children }: any) {
   return (
@@ -55,12 +55,9 @@ export default function Layout({ children }: any) {
       <GlobalStyle />
       <Top>
         <Header />
-        <Flex>
-          <Sidebar />
-          <PageMain>{children}</PageMain>
-        </Flex>
+        <Flex>{children}</Flex>
       </Top>
       <Footer />
     </>
-  );
+  )
 }

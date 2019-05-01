@@ -28,3 +28,8 @@ export type LoginFormData = {
   name: string;
   password: string;
 };
+
+export type LinkProps = {
+  url: string;
+  name: string;
+};
