@@ -6,7 +6,7 @@ const HeaderWrapper = styled.header`
   background-color: #eee;
   justify-content: space-between;
   padding: 5px;
-  box-shadow: 0 0 5px #333;
+  box-shadow: 0 0 10px #aaa;
 `
 const HeaderName = styled.span`
   font-size: 2rem;
