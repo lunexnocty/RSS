@@ -39,6 +39,7 @@
       "error",
       "never"
     ],
+    "no-console": "off",
     "no-unused-vars": "off",
     "react/jsx-uses-vars": [
       2

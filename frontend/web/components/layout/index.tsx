@@ -1,7 +1,7 @@
 import styled, { createGlobalStyle } from 'styled-components'
-import Header from './header'
-import Footer from './footer'
-import Sidebar from './sidebar'
+import Header from '../global/header'
+import Footer from '../global/footer'
+import Sidebar from '../global/sidebar'
 const GlobalStyle = createGlobalStyle`
 html,
 body {
@@ -34,9 +34,6 @@ a {
 
 `
 
-const PageMain = styled.main`
-  flex-grow: 1;
-`
 const Flex = styled.div`
   display: flex;
   flex-grow: 1;

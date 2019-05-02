@@ -1,4 +1,4 @@
-export type UserType = 'normal' | 'sourceAdmin' | 'userAdmin';
+export type UserRole = 'normal' | 'sourceAdmin' | 'userAdmin';
 
 export type SourceQueryResult = {
   sourceId: string;

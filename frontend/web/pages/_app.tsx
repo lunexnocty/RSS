@@ -1,11 +1,8 @@
 import React from 'react'
 import { Container, AppProps, DefaultAppIProps } from 'next/app'
-import Layout from '../components/global/layout'
+import Layout from '../components/layout'
 
-export default function App({
-  Component,
-  pageProps
-}: AppProps & DefaultAppIProps) {
+function App({ Component, pageProps }: AppProps & DefaultAppIProps) {
   return (
     <Container>
       <Layout>
@@ -14,3 +11,16 @@ export default function App({
     </Container>
   )
 }
+
+App.getInitialProps = async ({
+  Component,
+  ctx
+}: AppProps & DefaultAppIProps) => {
+  const pageProps = Component.getInitialProps
+    ? await Component.getInitialProps(ctx)
+    : {}
+
+  return { pageProps }
+}
+
+export default App
