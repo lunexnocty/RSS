@@ -25,7 +25,15 @@ export default class MyDocument extends Document<DocumentProps> {
   render() {
     return (
       <html>
-        <Head>{this.props.styleTags}</Head>
+        <Head>
+          {this.props.styleTags}
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+            crossorigin="anonymous"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

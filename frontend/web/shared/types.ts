@@ -1,5 +1,3 @@
-export type UserRole = 'normal' | 'sourceAdmin' | 'userAdmin';
-
 export type SourceQueryResult = {
   sourceId: string;
   unit: string;

@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { useState } from 'react'
 import Router from 'next/router'
+import { colors } from '../shared/theme'
 const LoginWrapper = styled.div`
   margin: 5rem auto auto;
   padding: 1rem;

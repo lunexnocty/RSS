@@ -1,6 +1,5 @@
 import styled from 'styled-components'
-import { LinkProps } from '../../shared/types'
-import role from '../../shared/utils/role'
+import { sidebarLinkProps } from '../../shared/role'
 import Link from 'next/link'
 const GlobalSidebar = styled.aside`
   min-width: 200px;
@@ -8,7 +7,7 @@ const GlobalSidebar = styled.aside`
 `
 
 type SidebarProps = {
-  links: LinkProps[];
+  links: sidebarLinkProps[];
   active: string;
 };
 type LinkItemProps = {
@@ -21,13 +20,17 @@ const SidebarLinkList = styled.ul`
 `
 
 const LinkItem = styled.li<LinkItemProps>`
-  padding: 5px 10px;
+  padding: 5px 5px 5px 20px;
   text-align: left;
   background-color: ${props => (props.active ? '#eee' : 'none')};
+  a {
+    display: block;
+  }
   &:hover {
     background-color: #eee;
   }
 `
+const LinkItemText = styled.span``
 
 function Sidebar({ links, active }: SidebarProps) {
   return (
@@ -36,7 +39,10 @@ function Sidebar({ links, active }: SidebarProps) {
         {links.map((link, i) => (
           <LinkItem key={`sidebar-${i}`} active={link.name === active}>
             <Link href={link.url}>
-              <a>{link.name}</a>
+              <a>
+                <i className={link.icon} />
+                <LinkItemText> {link.name}</LinkItemText>
+              </a>
             </Link>
           </LinkItem>
         ))}

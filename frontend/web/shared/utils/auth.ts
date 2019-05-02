@@ -1,5 +1,5 @@
 import api from '../api'
-
+import Router from 'next/router'
 export const cookieItems = {
   token: 'token',
   profile: 'profile'
@@ -35,6 +35,7 @@ export function isloggedIn() {
 
 export function logout() {
   Object.keys(cookieItems).map(key => localStorage.removeItem(key))
+  Router.push('/login')
 }
 
 export function setLocalStorage(key: string, value: string) {
