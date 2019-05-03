@@ -1,5 +1,5 @@
-export default ([rule = ""]: TemplateStringsArray) => () => (
+export default ([rule = '']: TemplateStringsArray) => () => (
   <>
     <css-doodle>{rule}</css-doodle>
   </>
-);
+)
