@@ -4,8 +4,8 @@ import Document, {
   NextScript,
   NextDocumentContext,
   DefaultDocumentIProps
-} from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+} from "next/document";
+import { ServerStyleSheet } from "styled-components";
 
 interface DocumentProps extends DefaultDocumentIProps {
   styleTags: React.Component[];
@@ -13,13 +13,13 @@ interface DocumentProps extends DefaultDocumentIProps {
 
 export default class MyDocument extends Document<DocumentProps> {
   static getInitialProps({ renderPage }: NextDocumentContext) {
-    const sheet = new ServerStyleSheet()
+    const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)
-    )
-    const styleTags = sheet.getStyleElement()
+    );
+    const styleTags = sheet.getStyleElement();
 
-    return { ...page, styleTags }
+    return { ...page, styleTags };
   }
 
   render() {
@@ -31,14 +31,16 @@ export default class MyDocument extends Document<DocumentProps> {
             rel="stylesheet"
             href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
             integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-            crossorigin="anonymous"
+            crossOrigin="anonymous"
           />
+
+          <script src="/static/js/css-doodle.min.js" />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }
