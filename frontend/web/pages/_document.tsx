@@ -34,7 +34,7 @@ export default class MyDocument extends Document<DocumentProps> {
             crossOrigin="anonymous"
           />
 
-          <script src="/static/js/css-doodle.min.js" />
+          <script src="/static/js/css-doodle.min.js" defer />
         </Head>
         <body>
           <Main />

@@ -1,46 +1,8 @@
 import styled from 'styled-components'
-import { useState } from 'react'
-import Doodle from '../components/doddle'
 import auth from '../shared/utils/auth'
-import { useSpring, animated } from 'react-spring'
-const BackgroundDoodle = Doodle`
-color: #fff;
-:host{
-margin: auto auto;
-}
-:doodle {
-  @grid: 1x10 / 600px;
-}
-@keyframes r {
-  to { transform: rotate(1turn) }
-}
-:container{
-  opacity: .7;
-}
-animation: r 60s linear infinite;
-@place-cell: center;
-@size: calc(@i() * 20%);
-border-radius: 50%;
-border-style: dashed;
-border-width: calc(@i() * 7px);
-border-color: hsla(
-  calc(20 * @i()), 70%, 68%,
-  calc(3 / @i() * .8)
-);
-transform: rotate(@r(360deg));
+import { useState } from 'react'
+import LazyBackground from '../components/loginBackground'
 
-`
-
-const BackgroundWrapper = styled(animated.div)`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  position: absolute;
-  top: 0;
-  overflow: hidden;
-  left: 0;
-  z-index: -1;
-`
 const LoginPage = styled.div`
   height: inherit;
   width: 100%;
@@ -124,18 +86,9 @@ function Login() {
     auth.login(state)
   }
 
-  const backgroundStyle = useSpring({
-    opacity: 1,
-    from: { opacity: 0 },
-    config: { duration: 200 }
-  })
-
   return (
     <LoginPage>
-      <BackgroundWrapper style={backgroundStyle}>
-        <BackgroundDoodle />
-      </BackgroundWrapper>
-
+      <LazyBackground />
       <LoginWrapper>
         <form onSubmit={onSubmit}>
           <ul>
