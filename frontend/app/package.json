@@ -1,7 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "dev": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject"
@@ -10,9 +10,13 @@
     "@types/expo": "^32.0.11",
     "@types/react": "^16.8.14",
     "@types/react-native": "^0.57.50",
+    "@types/react-navigation": "^3.0.6",
+    "@types/styled-components": "^4.1.14",
     "expo": "^32.0.0",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-navigation": "^3.9.1",
+    "styled-components": "^4.2.0",
     "typescript": "^3.4.5"
   },
   "devDependencies": {},

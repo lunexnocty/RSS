@@ -4,11 +4,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "dev/web": "cd web && yarn dev",
-    "dev/mobile": "cd mobile && yarn dev",
-    "lint": "eslint '{web,mobile,shared}/**/*.{js,ts,tsx}' --fix",
+    "dev/app": "cd mobile && yarn dev",
+    "lint": "eslint '{web,mobile}/**/*.{js,ts,tsx}' --fix",
     "lint/web": "eslint 'web/**/*.{js,ts,tsx}' --fix",
-    "lint/shared": "eslint 'shared/**/*.{js,ts,tsx}' --fix",
-    "lint/mobile": "eslint 'mobile/**/*.{js,ts,tsx}' --fix"
+    "lint/app": "eslint 'mobile/**/*.{js,ts,tsx}' --fix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.7.0",
