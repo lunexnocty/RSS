@@ -1,0 +1,68 @@
+import styled, { createGlobalStyle } from 'styled-components'
+import Header from '../global/header'
+import Footer from '../global/footer'
+import theme from '../../shared/theme'
+import { ThemeProvider } from 'styled-components'
+const GlobalStyle = createGlobalStyle`
+*{
+  transition: all .3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
+}
+html,
+body {
+  text-align: center;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+h1 {
+  font-family: serif;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+#__next {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+`
+
+const Flex = styled.div`
+  display: flex;
+  position: relative;
+  flex-grow: 1;
+  justify-content: space-between;
+`
+
+const Top = styled.div`
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`
+
+export default function Layout({ children }: any) {
+  return (
+    <ThemeProvider theme={theme}>
+      <>
+        <GlobalStyle />
+        <Top>
+          <Header />
+          <Flex>{children}</Flex>
+        </Top>
+        <Footer />
+      </>
+    </ThemeProvider>
+  )
+}
