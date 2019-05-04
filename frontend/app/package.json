@@ -19,6 +19,5 @@
     "styled-components": "^4.2.0",
     "typescript": "^3.4.5"
   },
-  "devDependencies": {},
   "private": true
 }

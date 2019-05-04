@@ -1,20 +1,17 @@
-import React from "react";
-import { Text } from "react-native";
-import styled from "styled-components/native";
+import HomeScreen from './screens/home'
+import LoginScreen from './screens/login'
+import LoadingScreen from './screens/loading'
+import { createStackNavigator, createSwitchNavigator, createAppContainer } from 'react-navigation'
 
-const Container = styled.View`
-  flex: 1;
-  background-color: "#fff";
-  align-items: "center";
-  justify-content: "center";
-`;
+const AuthStack = createStackNavigator({ Login: { screen: LoginScreen } })
+const MainNavigator = createStackNavigator({
+  Home: { screen: HomeScreen },
+})
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Container>
-        <Text>A Radiation Supervision System</Text>
-      </Container>
-    );
-  }
-}
+const App = createAppContainer(createSwitchNavigator({
+  loading: LoadingScreen,
+  App: MainNavigator,
+  Auth: AuthStack,
+}))
+
+export default App

@@ -1,8 +1,8 @@
-import styled, { createGlobalStyle } from "styled-components";
-import Header from "../global/header";
-import Footer from "../global/footer";
-import theme from "../../shared/theme";
-import { ThemeProvider } from "styled-components";
+import styled, { createGlobalStyle } from 'styled-components'
+import Header from '../global/header'
+import Footer from '../global/footer'
+import theme from '../../shared/theme'
+import { ThemeProvider } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
 *{
   transition: all .3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
@@ -36,21 +36,21 @@ a {
   justify-content: space-between;
 }
 
-`;
+`
 
 const Flex = styled.div`
   display: flex;
   position: relative;
   flex-grow: 1;
   justify-content: space-between;
-`;
+`
 
 const Top = styled.div`
   flex-grow: 1;
   position: relative;
   display: flex;
   flex-direction: column;
-`;
+`
 
 export default function Layout({ children }: any) {
   return (
@@ -64,5 +64,5 @@ export default function Layout({ children }: any) {
         <Footer />
       </>
     </ThemeProvider>
-  );
+  )
 }

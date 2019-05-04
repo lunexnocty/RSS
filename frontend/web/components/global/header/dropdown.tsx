@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Link from "next/link";
-import auth from "../../../shared/utils/auth";
+import styled from 'styled-components'
+import Link from 'next/link'
+import auth from '../../../shared/utils/auth'
 
 type DropdownProps = {
   username: string;
@@ -18,7 +18,7 @@ const DropdownWrapper = styled.ul`
   width: 8rem;
   z-index: 10;
   cursor: pointer;
-`;
+`
 
 export default function Dropdown({ username, role }: DropdownProps) {
   return (
@@ -34,5 +34,5 @@ export default function Dropdown({ username, role }: DropdownProps) {
         </Link>
       </li>
     </DropdownWrapper>
-  );
+  )
 }

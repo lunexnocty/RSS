@@ -5,9 +5,9 @@
   "scripts": {
     "dev/web": "cd web && yarn dev",
     "dev/app": "cd mobile && yarn dev",
-    "lint": "eslint '{web,mobile}/**/*.{js,ts,tsx}' --fix",
+    "lint": "eslint '{web,app}/**/*.{js,ts,tsx}' --fix",
     "lint/web": "eslint 'web/**/*.{js,ts,tsx}' --fix",
-    "lint/app": "eslint 'mobile/**/*.{js,ts,tsx}' --fix"
+    "lint/app": "eslint 'app/**/*.{js,ts,tsx}' --fix"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^1.7.0",
@@ -17,5 +17,9 @@
     "eslint-plugin-typescript": "^0.14.0",
     "typescript": "^3.4.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "babel-register": "^6.26.0",
+    "dotenv": "^8.0.0",
+    "dotenv-webpack": "^1.7.0"
+  }
 }
