@@ -1,22 +1,20 @@
-const { API_HOST } = process.env
-
-async function get<T extends Response>(
-  url: string,
-  query?: object
-): Promise<T> {
+const API_HOST = 'http://132.232.149.150:3389/api'
+console.log(API_HOST)
+async function get<T>(url: string, query?: object): Promise<T> {
   let link = buildLink(url, query)
-  return fetch(link) as Promise<T>
+  const res = await fetch(link, { mode: 'cors' })
+  return (await res.json()) as Promise<T>
 }
 
-async function post<T extends Response>(
-  url: string,
-  body: object,
-  query?: object
-): Promise<T> {
+async function post<T>(url: string, body: object, query?: object): Promise<T> {
   let link = buildLink(url, query)
-  return fetch(link, { method: 'POST', body: JSON.stringify(body) }) as Promise<
-    T
-  >
+  const res = await fetch(link, {
+    method: 'POST',
+    body: JSON.stringify(body),
+    mode: 'cors'
+  })
+
+  return (await res.json()) as Promise<T>
 }
 
 function buildLink(url: string, query?: object): string {

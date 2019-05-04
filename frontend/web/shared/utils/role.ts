@@ -3,7 +3,7 @@ import { LinkProps } from '../types'
 export type UserRole = '普通用户' | '放射源管理员' | '用户管理员';
 
 export const roles: UserRole[] = ['普通用户', '放射源管理员', '用户管理员']
-const random = (arr: any[]) => arr[Math.floor(Math.random() * arr.length)]
+
 export function get(): UserRole {
   return roles[0]
 }
