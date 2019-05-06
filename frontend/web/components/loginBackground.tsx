@@ -1,9 +1,13 @@
-import styled from 'styled-components'
-import Doodle from '../components/doddle'
-import { useSpring, animated } from 'react-spring'
+import styled from "styled-components";
+import { useSpring, animated } from "react-spring";
 
-const BackgroundDoodle = Doodle`
-color: #fff;
+type DoodleProps = {
+  color: number;
+};
+
+const Doodle = ({ color }: DoodleProps) => (
+  <>
+    <css-doodle>{`color: #fff;
 :host{
 margin: auto auto;
 }
@@ -23,12 +27,13 @@ border-radius: 50%;
 border-style: dashed;
 border-width: calc(@i() * 7px);
 border-color: hsla(
-  calc(20 * @i()), 70%, 68%,
-  calc(3 / @i() * .8)
+  calc(${color} * @i()), 70%, 68%,
+  calc(6 / @i() * .8)
 );
 transform: rotate(@r(360deg));
-
-`
+`}</css-doodle>
+  </>
+);
 
 const BackgroundWrapper = styled(animated.div)`
   width: 100%;
@@ -39,18 +44,18 @@ const BackgroundWrapper = styled(animated.div)`
   overflow: hidden;
   left: 0;
   z-index: -1;
-`
+`;
 
-export default function LoginBackground() {
+export default function LoginBackground({ color }: DoodleProps) {
   const backgroundStyle = useSpring({
     opacity: 1,
     from: { opacity: 0 },
     config: { duration: 200 }
-  })
+  });
 
   return (
     <BackgroundWrapper style={backgroundStyle}>
-      <BackgroundDoodle />
+      <Doodle color={color} />
     </BackgroundWrapper>
-  )
+  );
 }
