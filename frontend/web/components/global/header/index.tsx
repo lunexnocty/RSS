@@ -39,7 +39,6 @@ export default function GlobalHeader() {
     switch (action) {
     case 'close':
       return { showDropdown: false }
-      break
     case 'toggle':
       return { showDropdown: !prev.showDropdown }
     }
