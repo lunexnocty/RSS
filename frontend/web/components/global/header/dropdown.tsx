@@ -29,7 +29,7 @@ export default function Dropdown({ username, role }: DropdownProps) {
         <hr />
       </li>
       <li onClick={() => auth.logout()}>
-        <Link href="/login">
+        <Link href="/signin">
           <a>退出登录</a>
         </Link>
       </li>

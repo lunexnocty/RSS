@@ -1,5 +1,7 @@
 import auth, { RoleID } from '../shared/utils/auth'
 import { useState } from 'react'
+
+import { useSpring, animated } from 'react-spring'
 import LoginLayout from '../components/layout/loginLayout'
 import InputRow from '../components/inputRow'
 import Router from 'next/router'
@@ -45,6 +47,10 @@ export default function SignIn() {
     })
   }
 
+  const [opacityProps, setOpacity] = useSpring(() => ({
+    display: 'block'
+  }))
+
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const res = await auth.signup({
@@ -56,14 +62,17 @@ export default function SignIn() {
     if (res.status === 'failed') {
       set({ ...state, error: res.info })
     } else {
+      setOpacity({ display: 'none' })
       set({ ...state, info: res.info })
-      setTimeout(() => Router.replace('/'), 200)
+
+      setTimeout(() => Router.replace('/'), 500)
     }
   }
 
   return (
     <LoginLayout color={40}>
-      <form onSubmit={onSubmit}>
+      <h2>{state.info}</h2>
+      <animated.form style={opacityProps} onSubmit={onSubmit}>
         <ul>
           <InputRow
             id="username"
@@ -113,7 +122,7 @@ export default function SignIn() {
             <a>登陆</a>
           </Link>
         </SwitchLink>
-      </form>
+      </animated.form>
     </LoginLayout>
   )
 }

@@ -5,6 +5,7 @@ import LoginLayout from '../components/layout/loginLayout'
 import InputRow from '../components/inputRow'
 import Router from 'next/router'
 import SubmitButton from '../components/SubmitButton'
+import { useSpring, animated } from 'react-spring'
 import ErrorInfo from '../components/ErrorInfo'
 import Link from 'next/link'
 
@@ -13,6 +14,8 @@ export const SwitchLink = styled.p`
   margin-bottom: 0;
   color: steelblue;
 `
+
+export const Message = styled.h2``
 export default function SignIn() {
   const init = {
     info: '',
@@ -22,6 +25,9 @@ export default function SignIn() {
   }
   type State = typeof init;
   const [state, set] = useState(init)
+  const [opacityProps, setOpacity] = useSpring(() => ({
+    display: 'block'
+  }))
 
   const onInput = (key: keyof State, value: string) => {
     set({
@@ -36,14 +42,17 @@ export default function SignIn() {
     if (res.status === 'failed') {
       set({ ...state, error: res.info })
     } else {
+      setOpacity({ display: 'none' })
       set({ ...state, info: res.info })
-      setTimeout(() => Router.replace('/'), 200)
+      auth.setProfile(res.user)
+      setTimeout(() => Router.replace('/'), 500)
     }
   }
 
   return (
     <LoginLayout color={20}>
-      <form onSubmit={onSubmit}>
+      <Message>{state.info}</Message>
+      <animated.form onSubmit={onSubmit} style={opacityProps}>
         <ul>
           <InputRow
             id="username"
@@ -70,7 +79,7 @@ export default function SignIn() {
             <a>注册</a>
           </Link>
         </SwitchLink>
-      </form>
+      </animated.form>
     </LoginLayout>
   )
 }

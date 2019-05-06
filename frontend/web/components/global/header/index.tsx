@@ -34,7 +34,10 @@ export default function GlobalHeader() {
   type State = typeof init;
   type Action = 'close' | 'toggle';
   const rolename = role.get()
+  let user = auth.getProfile()
 
+  console.log(typeof user)
+  user = { username: '233' }
   const reducer = (prev: State, action: Action): State => {
     switch (action) {
     case 'close':
@@ -45,13 +48,15 @@ export default function GlobalHeader() {
   }
 
   const [state, dispatch] = useReducer(reducer, init)
-
+  const that = state
   if (process.browser) {
     const iconRef = document.getElementById('settings')
     useEffect(() => {
       window.addEventListener('click', e => {
         if (e.target !== iconRef) {
-          dispatch('close')
+          if (that.showDropdown) {
+            dispatch('close')
+          }
         }
       })
     }, [])
@@ -69,7 +74,9 @@ export default function GlobalHeader() {
         onClick={() => dispatch('toggle')}
       >
         <i id={'settings'} className="fas fa-cogs" />
-        {state.showDropdown && <Dropdown username={'用户名'} role={rolename} />}
+        {state.showDropdown && (
+          <Dropdown username={user.username} role={rolename} />
+        )}
       </SettingsButtonWrapper>
     </HeaderWrapper>
   )

@@ -49,7 +49,11 @@ async function signup(data: SignupFormData) {
   return await api.post<SignupFormResponse>('/signup', data)
 }
 
-async function setProfile(user: User) {
+function getProfile() {
+  return Cookie.get(cookieItems.user)
+}
+
+function setProfile(user: User) {
   Cookie.set(cookieItems.user, JSON.stringify(user))
 }
 
@@ -60,7 +64,7 @@ export function isloggedIn() {
 
 export function logout() {
   Cookie.remove(cookieItems.user)
-  Router.replace('/login')
+  Router.replace('/signin')
 }
 
 export function WithAuth({ children }: any) {
@@ -79,6 +83,8 @@ export function WithAuth({ children }: any) {
 }
 export default {
   signin,
+  setProfile,
+  getProfile,
   signup,
   logout,
   isloggedIn
