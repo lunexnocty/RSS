@@ -1,23 +1,10 @@
-import styled from 'styled-components'
-import role from '../../shared/utils/role'
-import { LinkProps } from '../../shared/types'
-import SidebarLayout from '../../components/layout/sidebarLayout'
+import Layout from '../../components/layout'
 
-type SourceMangeProps = {
-  links: LinkProps[];
-};
 
-function SourceMange({ links }: SourceMangeProps) {
+export default function SourceMange() {
   return (
-    <SidebarLayout links={links}>
+    <Layout >
       <h1>History page</h1>
-    </SidebarLayout>
+    </Layout>
   )
 }
-
-SourceMange.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
-}
-
-export default SourceMange

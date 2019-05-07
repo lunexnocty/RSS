@@ -1,12 +1,7 @@
-import styled from 'styled-components'
-import role from '../../shared/utils/role'
-import { LinkProps } from '../../shared/types'
-import SidebarLayout from '../../components/layout/sidebarLayout'
+import Layout from '../../components/layout'
 
-function Search() {
+export default function Search() {
   return (
-    <h1>Search page</h1>
+    <Layout> <h1>Search page</h1></Layout>
   )
 }
-
-export default Search

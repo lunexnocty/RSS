@@ -1,14 +1,8 @@
-import styled from 'styled-components'
-import role from '../../shared/utils/role'
-import { LinkProps } from '../../shared/types'
-import SidebarLayout from '../../components/layout/sidebarLayout'
 
-function Application() {
+import Layout from '../../components/layout'
+
+export default function Application() {
   return (
-    <h1>Apply page</h1>
-
+    <Layout><h1>Apply page</h1></Layout>
   )
 }
-
-
-export default Application
