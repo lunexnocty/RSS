@@ -3,21 +3,12 @@ import role from '../../shared/utils/role'
 import { LinkProps } from '../../shared/types'
 import SidebarLayout from '../../components/layout/sidebarLayout'
 
-type ApplicationProps = {
-  links: LinkProps[];
-};
-
-function Application({ links }: ApplicationProps) {
+function Application() {
   return (
-    <SidebarLayout links={links}>
-      <h1>Apply page</h1>
-    </SidebarLayout>
+    <h1>Apply page</h1>
+
   )
 }
 
-Application.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
-}
 
 export default Application

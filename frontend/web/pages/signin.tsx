@@ -1,7 +1,7 @@
 import auth from '../shared/utils/auth'
 import { useState } from 'react'
 import styled from 'styled-components'
-import LoginLayout from '../components/layout/loginLayout'
+import WithBackground from '../components/layout/background'
 import InputRow from '../components/inputRow'
 import Router from 'next/router'
 import SubmitButton from '../components/SubmitButton'
@@ -16,6 +16,7 @@ export const SwitchLink = styled.p`
 `
 
 export const Message = styled.h2``
+
 export default function SignIn() {
   const init = {
     info: '',
@@ -50,7 +51,7 @@ export default function SignIn() {
   }
 
   return (
-    <LoginLayout color={20}>
+    <WithBackground color={20}>
       <Message>{state.info}</Message>
       <animated.form onSubmit={onSubmit} style={opacityProps}>
         <ul>
@@ -80,6 +81,6 @@ export default function SignIn() {
           </Link>
         </SwitchLink>
       </animated.form>
-    </LoginLayout>
+    </WithBackground>
   )
 }

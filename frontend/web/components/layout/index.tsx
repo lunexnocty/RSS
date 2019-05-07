@@ -3,6 +3,8 @@ import Header from '../global/header'
 import Footer from '../global/footer'
 import theme from '../../shared/theme'
 import { ThemeProvider } from 'styled-components'
+import Sidebar from '../global/sidebar'
+import Protected from '../protected'
 const GlobalStyle = createGlobalStyle`
 *{
   transition: all .3s cubic-bezier(0.46, 0.03, 0.52, 0.96);
@@ -52,17 +54,36 @@ const Top = styled.div`
   flex-direction: column;
 `
 
-export default function Layout({ children }: any) {
+const PageMain = styled.main`
+  flex-grow: 1;
+`
+
+export function LayoutBase({ children }: any) {
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
         <Top>
           <Header />
-          <Flex>{children}</Flex>
+          <Flex>
+            {children}
+          </Flex>
         </Top>
         <Footer />
       </>
     </ThemeProvider>
+  )
+}
+
+export default function Layout({ children }: any) {
+
+  return (
+    <LayoutBase>
+      <Sidebar />
+      <PageMain>
+        <Protected>{children}</Protected>
+      </PageMain>
+    </LayoutBase>
   )
 }

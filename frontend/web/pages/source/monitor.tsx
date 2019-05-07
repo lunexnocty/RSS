@@ -3,21 +3,10 @@ import role from '../../shared/utils/role'
 import { LinkProps } from '../../shared/types'
 import SidebarLayout from '../../components/layout/sidebarLayout'
 
-type MonitorProps = {
-  links: LinkProps[];
-};
-
-function Monitor({ links }: IndexProps) {
+function Monitor() {
   return (
-    <SidebarLayout links={links}>
-      <h1>Monitor page</h1>
-    </SidebarLayout>
+    <h1>Monitor page</h1>
   )
-}
-
-Monitor.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
 }
 
 export default Monitor

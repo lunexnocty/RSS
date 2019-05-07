@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useReducer, useEffect } from 'react'
-import role from '../../../shared/utils/role'
+import { useReducer, useEffect ,useContext} from 'react'
 import Dropdown from './dropdown'
-import auth from '../../../shared/utils/auth'
+import {LoginContext} from '../../../context/login'
+
 const HeaderWrapper = styled.header`
   display: flex;
   justify-content: space-between;
@@ -11,6 +11,7 @@ const HeaderWrapper = styled.header`
   box-shadow: 0 0 10px #aaa;
   font-size: 1.4rem;
 `
+
 const HeaderName = styled.span`
   font-size: inherit;
   padding: 0 20px;
@@ -33,11 +34,7 @@ export default function GlobalHeader() {
   const init = { showDropdown: false }
   type State = typeof init;
   type Action = 'close' | 'toggle';
-  const rolename = role.get()
-  let user = auth.getProfile()
-
-  console.log(typeof user)
-  user = { username: '233' }
+ 
   const reducer = (prev: State, action: Action): State => {
     switch (action) {
     case 'close':
@@ -46,21 +43,20 @@ export default function GlobalHeader() {
       return { showDropdown: !prev.showDropdown }
     }
   }
-
   const [state, dispatch] = useReducer(reducer, init)
-  const that = state
   if (process.browser) {
-    const iconRef = document.getElementById('settings')
     useEffect(() => {
-      window.addEventListener('click', e => {
+      const iconRef = document.getElementById('settings')
+      window.addEventListener('click', e => {        
         if (e.target !== iconRef) {
-          if (that.showDropdown) {
-            dispatch('close')
-          }
+          dispatch('close')
         }
       })
     }, [])
   }
+
+  const isLoggedIn = useContext(LoginContext)
+
   return (
     <HeaderWrapper>
       <Link href="/">
@@ -70,12 +66,12 @@ export default function GlobalHeader() {
       </Link>
 
       <SettingsButtonWrapper
-        isloggedIn={auth.isloggedIn()}
+        isloggedIn={isLoggedIn}
         onClick={() => dispatch('toggle')}
       >
         <i id={'settings'} className="fas fa-cogs" />
         {state.showDropdown && (
-          <Dropdown username={user.username} role={rolename} />
+          <Dropdown />
         )}
       </SettingsButtonWrapper>
     </HeaderWrapper>

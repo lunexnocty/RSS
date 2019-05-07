@@ -2,11 +2,13 @@ import api from '../api'
 import Router from 'next/router'
 import React, { useEffect, useState } from 'react'
 import Cookie from 'js-cookie'
+import {roleMap,UserRole} from './role'
 
 export type RoleID = 1 | 2 | 3;
 export type ResponseStatus = 'success' | 'failed';
 
 export const cookieItems = {
+  isloggedIn: 'loggedIn',
   user: 'user'
 }
 
@@ -14,6 +16,7 @@ export type SigninFormData = {
   username: string;
   password: string;
 };
+
 export type SigninFormResponse = {
   status: ResponseStatus;
   user: User | null;
@@ -32,10 +35,16 @@ export type SignupFormResponse = {
   info: string;
 };
 
-export type User = {
+export type UserResponse = {
   username: string;
   avatar: string;
   role_id: RoleID;
+};
+
+export type User = {
+  name: string;
+  avatar: string;
+  role: UserRole;
 };
 
 async function signin({ username, password }: SigninFormData) {
@@ -49,12 +58,18 @@ async function signup(data: SignupFormData) {
   return await api.post<SignupFormResponse>('/signup', data)
 }
 
-function getProfile() {
-  return Cookie.get(cookieItems.user)
+function getProfile():User {
+  return Cookie.getJSON(cookieItems.user) || {}
 }
 
-function setProfile(user: User) {
-  Cookie.set(cookieItems.user, JSON.stringify(user))
+function setProfile(userData: UserResponse) {
+  //Cookie.set(cookieItems.isloggedIn,'yes')
+  const user: User = {
+    name: userData.username,
+    avatar: userData.avatar,
+    role: roleMap[userData.role_id]
+  }
+  Cookie.set(cookieItems.user, user)
 }
 
 export function isloggedIn() {

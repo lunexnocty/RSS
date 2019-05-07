@@ -55,7 +55,7 @@ export default function LoginBackground({ color }: DoodleProps) {
 
   return (
     <BackgroundWrapper style={backgroundStyle}>
-      <Doodle color={color} />
+      <Doodle color={color}/>
     </BackgroundWrapper>
   )
 }

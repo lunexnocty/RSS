@@ -1,11 +1,8 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import auth from '../../../shared/utils/auth'
-
-type DropdownProps = {
-  username: string;
-  role: string;
-};
+import {userContext} from '../../../context/user'
+import {useContext} from 'react'
 
 const DropdownWrapper = styled.ul`
   position: absolute;
@@ -20,11 +17,12 @@ const DropdownWrapper = styled.ul`
   cursor: pointer;
 `
 
-export default function Dropdown({ username, role }: DropdownProps) {
+export default function Dropdown() {
+  const user = useContext(userContext)
   return (
     <DropdownWrapper>
-      <li>{username}</li>
-      <li>{role}</li>
+      <li>{user.name}</li>
+      <li>{user.role}</li>
       <li>
         <hr />
       </li>

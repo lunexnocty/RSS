@@ -1,34 +1,36 @@
+import styled from 'styled-components'
 import auth, { RoleID } from '../shared/utils/auth'
 import { useState } from 'react'
-
 import { useSpring, animated } from 'react-spring'
-import LoginLayout from '../components/layout/loginLayout'
 import InputRow from '../components/inputRow'
 import Router from 'next/router'
 import SubmitButton from '../components/SubmitButton'
 import ErrorInfo from '../components/ErrorInfo'
 import { SwitchLink } from './signin'
 import Link from 'next/link'
-import styled from 'styled-components'
+import WithBackground from '../components/layout/background'
 
 const OptionInput = styled.input`
   width: 0;
   height: 0;
   opacity: 0;
 `
+
 type OptionLabelProps = {
   focus: boolean;
 };
+
 const OptionLabel = styled.label<OptionLabelProps>`
   cursor: pointer;
   padding: 5px;
   background: ${props => (props.focus ? 'skyblue' : '#fff')};
   color: #000;
 `
+
 const Row = styled.li`
   margin-bottom: 2rem;
 `
-export default function SignIn() {
+export default function SignUp() {
   const init = {
     info: '',
     error: '',
@@ -70,7 +72,7 @@ export default function SignIn() {
   }
 
   return (
-    <LoginLayout color={40}>
+    <WithBackground color={40}>
       <h2>{state.info}</h2>
       <animated.form style={opacityProps} onSubmit={onSubmit}>
         <ul>
@@ -97,15 +99,15 @@ export default function SignIn() {
           <Row>
             <div onChange={e => onInput('role_id', parseInt(e.target.value))}>
               <OptionInput id="role-3" type="radio" value="3" name="role" />
-              <OptionLabel focus={state.role_id == '3'} for="role-3">
+              <OptionLabel focus={state.role_id == '3'} htmlFor="role-3">
                 普通用户
               </OptionLabel>
               <OptionInput id="role-2" type="radio" value="2" name="role" />
-              <OptionLabel focus={state.role_id == '2'} for="role-2">
+              <OptionLabel focus={state.role_id == '2'} htmlFor="role-2">
                 放射源管理员
               </OptionLabel>
               <OptionInput id="role-1" type="radio" value="1" name="role" />
-              <OptionLabel focus={state.role_id == '1'} for="role-1">
+              <OptionLabel focus={state.role_id == '1'} htmlFor="role-1">
                 用户管理员
               </OptionLabel>
             </div>
@@ -123,6 +125,7 @@ export default function SignIn() {
           </Link>
         </SwitchLink>
       </animated.form>
-    </LoginLayout>
+    </WithBackground>
   )
 }
+
