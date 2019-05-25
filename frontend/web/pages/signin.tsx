@@ -44,7 +44,7 @@ export default function SignIn() {
       set({ ...state, error: res.error });
     } else {
       setOpacity({ display: "none" });
-      set({ ...state, info: res.infomation });
+      set({ ...state, info: `Hello, ${res.user.username}` });
       auth.setProfile(res.user);
       setTimeout(() => Router.replace("/"), 1000);
     }
