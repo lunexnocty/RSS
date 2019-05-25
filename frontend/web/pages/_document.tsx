@@ -4,8 +4,8 @@ import Document, {
   NextScript,
   NextDocumentContext,
   DefaultDocumentIProps
-} from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+} from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 interface DocumentProps extends DefaultDocumentIProps {
   styleTags: React.Component[];
@@ -13,13 +13,13 @@ interface DocumentProps extends DefaultDocumentIProps {
 
 export default class MyDocument extends Document<DocumentProps> {
   static getInitialProps({ renderPage }: NextDocumentContext) {
-    const sheet = new ServerStyleSheet()
+    const sheet = new ServerStyleSheet();
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)
-    )
-    const styleTags = sheet.getStyleElement()
+    );
+    const styleTags = sheet.getStyleElement();
 
-    return { ...page, styleTags }
+    return { ...page, styleTags };
   }
 
   render() {
@@ -41,6 +41,6 @@ export default class MyDocument extends Document<DocumentProps> {
           <NextScript />
         </body>
       </html>
-    )
+    );
   }
 }

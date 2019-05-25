@@ -1,21 +1,20 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { LoginContext } from '../context/login'
-import Router from 'next/router'
+import React, { useState, useEffect, useContext } from 'react';
+import { LoginContext } from '../context/login';
+import Router from 'next/router';
 
 export default function Protected({ children }: any) {
-
-  const [loading, set] = useState(false)
-  const isloggedIn = useContext(LoginContext)
+  const [loading, set] = useState(false);
+  const isloggedIn = useContext(LoginContext);
 
   if (process.browser) {
     useEffect(() => {
       if (!isloggedIn) {
-        Router.push('/signin')
+        Router.push('/signin');
       } else {
-        setTimeout(() => set(true), 200)
+        setTimeout(() => set(true), 200);
       }
-    })
+    });
   }
-  
-  return <>{loading ? { ...children } : ''}</>
+
+  return <>{loading ? { ...children } : ''}</>;
 }

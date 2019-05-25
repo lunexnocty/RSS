@@ -1,6 +1,6 @@
-import styled from 'styled-components'
-import LazyBackground from '../loginBackground'
-import {LayoutBase} from './index'
+import styled from 'styled-components';
+import LazyBackground from '../loginBackground';
+import { LayoutBase } from './index';
 
 const LoginPage = styled.div`
   height: inherit;
@@ -8,7 +8,7 @@ const LoginPage = styled.div`
   align-items: center;
   display: flex;
   justify-content: center;
-`
+`;
 
 const LoginWrapper = styled.div`
   margin: 0;
@@ -16,21 +16,22 @@ const LoginWrapper = styled.div`
   min-width: 20rem;
   box-shadow: 2px 2px 10px #ccc;
   background-color: rgba(255, 255, 255, 0.9);
-`
+`;
 type withBackgroundProps = {
-  children:any
-  color:number
-}
+  children: any;
+  color: number;
+};
 
-export default function WithBackground({children,color}:withBackgroundProps) {
+export default function WithBackground({
+  children,
+  color
+}: withBackgroundProps) {
   return (
     <LayoutBase>
       <LoginPage>
         <LazyBackground color={color} />
-        <LoginWrapper>
-          {children}
-        </LoginWrapper>
+        <LoginWrapper>{children}</LoginWrapper>
       </LoginPage>
     </LayoutBase>
-  )
+  );
 }

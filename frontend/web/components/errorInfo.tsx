@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const ErrorInfo = styled.span`
   color: #f44336;

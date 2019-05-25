@@ -1,5 +1,5 @@
-import { LinkProps } from '../types'
-import auth from './auth'
+import { LinkProps } from '../types';
+import auth from './auth';
 export type UserRole = '普通用户' | '放射源管理员' | '用户管理员';
 type RoleMap = {
   [n: number]: UserRole;
@@ -9,7 +9,7 @@ export const roleMap: RoleMap = {
   3: '普通用户',
   2: '放射源管理员',
   1: '用户管理员'
-}
+};
 
 export interface sidebarLinkProps extends LinkProps {
   icon: string;
@@ -34,8 +34,8 @@ export const sidebarMap: SidebarMap = {
   用户管理员: [
     { url: '/user/search', name: '查询用户', icon: 'far fa-address-book' }
   ]
-}
+};
 
 export default {
   sidebarMap
-}
+};

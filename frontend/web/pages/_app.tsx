@@ -1,7 +1,7 @@
-import React from 'react'
-import { Container, AppProps, DefaultAppIProps } from 'next/app'
-import UserProvider from '../context/user'
-import LoginProvider from '../context/login'
+import React from 'react';
+import { Container, AppProps, DefaultAppIProps } from 'next/app';
+import UserProvider from '../context/user';
+import LoginProvider from '../context/login';
 
 function App({ Component, pageProps }: AppProps & DefaultAppIProps) {
 
@@ -13,7 +13,7 @@ function App({ Component, pageProps }: AppProps & DefaultAppIProps) {
         </UserProvider>
       </LoginProvider>
     </Container>
-  )
+  );
 }
 
 App.getInitialProps = async ({
@@ -23,9 +23,9 @@ App.getInitialProps = async ({
 
   const pageProps = Component.getInitialProps
     ? await Component.getInitialProps(ctx)
-    : {}
+    : {};
 
-  return { pageProps }
-}
+  return { pageProps };
+};
 
-export default App
+export default App;

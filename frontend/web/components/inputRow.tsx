@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import { useState } from 'react'
+import styled from 'styled-components';
+import { useState } from 'react';
 
 const InputWrapper = styled.li`
   width: 80%;
@@ -7,7 +7,7 @@ const InputWrapper = styled.li`
   height: 1.6rem;
   font-size: 1.2rem;
   position: relative;
-`
+`;
 
 type InputLabelProps = {
   focus: boolean;
@@ -22,7 +22,7 @@ const InputLabel = styled.label<InputLabelProps>`
   color: ${props => (props.focus ? '#000' : '#ccc')};
   transform: ${props => (props.focus ? 'translateY(-1.4rem)' : '')};
   font-size: ${props => (props.focus ? '0.8rem' : 'inherit')};
-`
+`;
 
 const InputField = styled.input`
   width: 100%;
@@ -35,7 +35,7 @@ const InputField = styled.input`
     outline: none;
     border-bottom: 2px solid skyblue;
   }
-`
+`;
 
 type InputProps = {
   label: string;
@@ -45,12 +45,12 @@ type InputProps = {
 };
 
 export default function InputRow({ id, label, type, onChange }: InputProps) {
-  const [focus, setFocus] = useState(false)
-  const [text, set] = useState('')
+  const [focus, setFocus] = useState(false);
+  const [text, set] = useState('');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    set(e.target.value)
-    onChange(e)
-  }
+    set(e.target.value);
+    onChange(e);
+  };
 
   return (
     <InputWrapper>
@@ -65,5 +65,5 @@ export default function InputRow({ id, label, type, onChange }: InputProps) {
         {label}
       </InputLabel>
     </InputWrapper>
-  )
+  );
 }

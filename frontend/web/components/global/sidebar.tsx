@@ -1,14 +1,14 @@
-import {useContext} from 'react'
-import {userContext} from '../../context/user'
-import {sidebarMap} from '../../shared/utils/role'
-import styled from 'styled-components'
-import Link from 'next/link'
-import Icon from '../icon'
+import {useContext} from 'react';
+import {userContext} from '../../context/user';
+import {sidebarMap} from '../../shared/utils/role';
+import styled from 'styled-components';
+import Link from 'next/link';
+import Icon from '../icon';
 
 const GlobalSidebar = styled.aside`
   min-width: 200px;
   width: 20%;
-`
+`;
 
 type LinkItemProps = {
   active: boolean;
@@ -17,7 +17,7 @@ type LinkItemProps = {
 const SidebarLinkList = styled.ul`
   position: sticky;
   margin-top: 1rem;
-`
+`;
 
 const LinkItem = styled.li<LinkItemProps>`
   padding: 5px 5px 5px 20px;
@@ -29,13 +29,13 @@ const LinkItem = styled.li<LinkItemProps>`
   &:hover {
     background-color: #eee;
   }
-`
-const LinkItemText = styled.span``
+`;
+const LinkItemText = styled.span``;
 
 function Sidebar() {
 
-  const user = useContext(userContext)
-  const links = sidebarMap[user.role]
+  const user = useContext(userContext);
+  const links = sidebarMap[user.role];
   return (
     <GlobalSidebar>
       <SidebarLinkList>
@@ -51,7 +51,7 @@ function Sidebar() {
         ))}
       </SidebarLinkList>
     </GlobalSidebar>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;
