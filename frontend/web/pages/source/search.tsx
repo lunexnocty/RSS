@@ -1,23 +1,7 @@
-import styled from 'styled-components'
-import role from '../../shared/utils/role'
-import { LinkProps } from '../../shared/types'
-import SidebarLayout from '../../components/layout/sidebarLayout'
+import Layout from '../../components/layout'
 
-type SearchProps = {
-  links: LinkProps[];
-};
-
-function Search({ links }: SearchProps) {
+export default function Search() {
   return (
-    <SidebarLayout links={links}>
-      <h1>Search page</h1>
-    </SidebarLayout>
+    <Layout> <h1>Search page</h1></Layout>
   )
 }
-
-Search.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
-}
-
-export default Search

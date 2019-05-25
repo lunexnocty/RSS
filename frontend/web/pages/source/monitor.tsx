@@ -1,23 +1,7 @@
-import styled from 'styled-components'
-import role from '../../shared/utils/role'
-import { LinkProps } from '../../shared/types'
-import SidebarLayout from '../../components/layout/sidebarLayout'
+import Layout from '../../components/layout'
 
-type MonitorProps = {
-  links: LinkProps[];
-};
-
-function Monitor({ links }: IndexProps) {
+export default function Monitor() {
   return (
-    <SidebarLayout links={links}>
-      <h1>Monitor page</h1>
-    </SidebarLayout>
+    <Layout><h1>Monitor page</h1></Layout>
   )
 }
-
-Monitor.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
-}
-
-export default Monitor

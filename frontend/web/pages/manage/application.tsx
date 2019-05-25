@@ -1,23 +1,9 @@
-import styled from 'styled-components'
-import role from '../../shared/utils/role'
-import { LinkProps } from '../../shared/types'
-import SidebarLayout from '../../components/layout/sidebarLayout'
+import Layout from '../../components/layout'
 
-type ApplicationProps = {
-  links: LinkProps[];
-};
-
-function ApplicationManage({ links }: ApplicationProps) {
+export default function ApplicationManage() {
   return (
-    <SidebarLayout links={links}>
+    <Layout>
       <h1>Application Manage page</h1>
-    </SidebarLayout>
+    </Layout>
   )
 }
-
-ApplicationManage.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
-}
-
-export default ApplicationManage

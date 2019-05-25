@@ -1,16 +1,15 @@
+import {useContext} from 'react'
+import {userContext} from '../../context/user'
+import {sidebarMap} from '../../shared/utils/role'
 import styled from 'styled-components'
-import { sidebarLinkProps } from '../../shared/utils/role'
 import Link from 'next/link'
 import Icon from '../icon'
+
 const GlobalSidebar = styled.aside`
   min-width: 200px;
   width: 20%;
 `
 
-type SidebarProps = {
-  links: sidebarLinkProps[];
-  active: string;
-};
 type LinkItemProps = {
   active: boolean;
 };
@@ -33,12 +32,15 @@ const LinkItem = styled.li<LinkItemProps>`
 `
 const LinkItemText = styled.span``
 
-function Sidebar({ links, active }: SidebarProps) {
+function Sidebar() {
+
+  const user = useContext(userContext)
+  const links = sidebarMap[user.role]
   return (
     <GlobalSidebar>
       <SidebarLinkList>
-        {links.map((link, i) => (
-          <LinkItem key={`sidebar-${i}`} active={link.name === active}>
+        {links && links.map((link, i) => (
+          <LinkItem key={`sidebar-${i}`} active={false}>
             <Link href={link.url}>
               <a>
                 <Icon className={link.icon} />

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import LazyBackground from '../loginBackground'
+import {LayoutBase} from './index'
 
 const LoginPage = styled.div`
   height: inherit;
@@ -8,6 +9,7 @@ const LoginPage = styled.div`
   display: flex;
   justify-content: center;
 `
+
 const LoginWrapper = styled.div`
   margin: 0;
   padding: 2rem;
@@ -15,12 +17,20 @@ const LoginWrapper = styled.div`
   box-shadow: 2px 2px 10px #ccc;
   background-color: rgba(255, 255, 255, 0.9);
 `
+type withBackgroundProps = {
+  children:any
+  color:number
+}
 
-export default function LoginLayout({ children }: any) {
+export default function WithBackground({children,color}:withBackgroundProps) {
   return (
-    <LoginPage>
-      <LazyBackground />
-      <LoginWrapper>{children}</LoginWrapper>
-    </LoginPage>
+    <LayoutBase>
+      <LoginPage>
+        <LazyBackground color={color} />
+        <LoginWrapper>
+          {children}
+        </LoginWrapper>
+      </LoginPage>
+    </LayoutBase>
   )
 }

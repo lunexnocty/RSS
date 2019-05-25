@@ -1,27 +1,13 @@
 import styled from 'styled-components'
-import role from '../shared/utils/role'
-import { WithAuth } from '../shared/utils/auth'
-import { sidebarLinkProps } from '../shared/utils/role'
-import SidebarLayout from '../components/layout/sidebarLayout'
+import Layout from '../components/layout/'
+
 const IndexWrapper = styled.h1``
 
-type IndexProps = {
-  links: sidebarLinkProps[];
-};
-
-function Index({ links }: IndexProps) {
+export default function Index() {
   return (
-    <WithAuth>
-      <SidebarLayout links={links}>
-        <IndexWrapper>Welcome</IndexWrapper>
-      </SidebarLayout>
-    </WithAuth>
+    <Layout>
+      <IndexWrapper>Welcome</IndexWrapper>
+    </Layout>
   )
 }
 
-Index.getInitialProps = () => {
-  const links = role.getSidebarLinksByRole()
-  return { links }
-}
-
-export default Index

@@ -1,13 +1,17 @@
 import React from 'react'
 import { Container, AppProps, DefaultAppIProps } from 'next/app'
-import Layout from '../components/layout'
+import UserProvider from '../context/user'
+import LoginProvider from '../context/login'
 
 function App({ Component, pageProps }: AppProps & DefaultAppIProps) {
+
   return (
     <Container>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <LoginProvider>
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
+      </LoginProvider>
     </Container>
   )
 }
@@ -16,6 +20,7 @@ App.getInitialProps = async ({
   Component,
   ctx
 }: AppProps & DefaultAppIProps) => {
+
   const pageProps = Component.getInitialProps
     ? await Component.getInitialProps(ctx)
     : {}
