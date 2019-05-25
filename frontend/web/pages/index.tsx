@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import Layout from '../components/layout/';
-import Pagination from '../components/pagination';
-import Swal from 'sweetalert2';
-import api, { Source } from '../shared/api/source';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import Layout from "../components/layout/";
+import Pagination from "../components/pagination";
+import Swal from "sweetalert2";
+import api, { Source } from "../shared/api/source";
 
 type AvailabilityProps = {
   availabile: boolean;
@@ -28,11 +28,12 @@ const Cell = styled.td`
 `;
 
 const Availability = styled.span<AvailabilityProps>`
+  font-family: sans-serif;
   font-weight: bold;
   padding: 5px 1rem;
   border-radius: 1rem;
   color: #fff;
-  background-color: ${props => (props.availabile ? '#9ccc65' : '#e91e63')};
+  background-color: ${props => (props.availabile ? "#9ccc65" : "#e91e63")};
 `;
 
 export default function Index() {
@@ -46,8 +47,8 @@ export default function Index() {
       const res = await api.search({ page, enable });
       if (res.status !== 400) {
         Swal.fire({
-          type: 'error',
-          title: '出错了',
+          type: "error",
+          title: "出错了",
           text: res.error,
           heightAuto: false
         });
@@ -61,7 +62,7 @@ export default function Index() {
   }, [page, filter]);
 
   const changePage = (action: string) => {
-    if (action === 'forth') {
+    if (action === "forth") {
       setPage(page + 1);
     } else {
       if (page === 0) {
@@ -79,21 +80,20 @@ export default function Index() {
         <Table>
           <thead>
             <Row>
-              <th style={{ width: '10%' }}>RST ID</th>
-              <th style={{ width: '25%' }}>名称</th>
-              <th style={{ width: '10%' }}>放射源ID</th>
-              <th style={{ width: '15%' }}>
+              <th style={{ width: "10%" }}>RST ID</th>
+              <th style={{ width: "25%" }}>名称</th>
+              <th style={{ width: "10%" }}>放射源ID</th>
+              <th style={{ width: "15%" }}>
                 可用性
                 <input
                   style={{
-                    transform: 'scale(2)',
-                    marginLeft: '10px'
+                    marginLeft: "10px"
                   }}
                   type="checkbox"
                   onChange={e => setFilter(e.target.checked)}
                 />
               </th>
-              <th style={{ width: '30%' }}>更新时间</th>
+              <th style={{ width: "30%" }}>更新时间</th>
             </Row>
           </thead>
           <tbody>
@@ -104,7 +104,7 @@ export default function Index() {
                 <Cell>{source.source_id}</Cell>
                 <Cell>
                   <Availability availabile={source.enable}>
-                    {source.enable ? '✔' : 'X'}
+                    {source.enable ? "✔" : "X"}
                   </Availability>
                 </Cell>
                 <Cell>{source.update_time}</Cell>
