@@ -20,13 +20,13 @@ type SidebarMap = {
 
 export const sidebarMap: SidebarMap = {
   普通用户: [
-    { url: "/source/search", name: "查询", icon: "fas fa-search" },
+    { url: "/", name: "查询", icon: "fas fa-search" },
     { url: "/source/application", name: "申请", icon: "fas fa-file-alt" },
     { url: "/source/monitor", name: "监控", icon: "far fa-chart-bar" },
     { url: "/user/history/", name: "个人记录", icon: "fas fa-history" }
   ],
   RST管理员: [
-    { url: "/source/search", name: "查询", icon: "fas fa-search" },
+    { url: "/", name: "查询", icon: "fas fa-search" },
     { url: "/manage/application", name: "处理申请", icon: "fas fa-tasks" },
     { url: "/manage/history", name: "管理日志", icon: "fas fa-history" },
     { url: "/manage/source", name: "登记/注销放射源", icon: "fas fa-pen-nib" }

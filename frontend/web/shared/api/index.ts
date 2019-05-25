@@ -1,4 +1,4 @@
-const API_HOST = 'http://132.232.149.150:3389/api';
+const API_HOST = "http://132.232.149.150:3389/api";
 
 export type BasicResponse = {
   infomation?: string;
@@ -13,11 +13,11 @@ async function get<R extends BasicResponse>(
   let link = buildLink(url, query);
 
   try {
-    const res = await fetch(link, { mode: 'cors' });
+    const res = await fetch(link, { mode: "cors", credentials: "include" });
     return (await res.json()) as Promise<R>;
   } catch {
     return {
-      infomation: 'Network Error',
+      infomation: "Network Error",
       status: -1
     };
   }
@@ -32,15 +32,16 @@ async function post<R extends BasicResponse>(
 
   try {
     const res = await fetch(link, {
-      method: 'POST',
+      method: "POST",
+      credentials: "include",
       body: JSON.stringify(body),
-      mode: 'cors'
+      mode: "cors"
     });
 
     return (await res.json()) as Promise<R>;
   } catch {
     return {
-      infomation: 'Network Error',
+      infomation: "Network Error",
       status: -1
     };
   }
@@ -57,8 +58,8 @@ function buildLink(url: string, query?: object): string {
 
 function buildQuery(obj: object) {
   return Object.entries(obj)
-    .map(pair => pair.map(encodeURIComponent).join('='))
-    .join('&');
+    .map(pair => pair.map(encodeURIComponent).join("="))
+    .join("&");
 }
 
 export default {

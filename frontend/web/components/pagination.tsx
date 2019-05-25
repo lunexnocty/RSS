@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Nav = styled.nav`
   width: 95%;
@@ -17,10 +17,10 @@ const NavButton = styled.button`
   border-radius: 10px;
   border: 0;
   transition: 0.3s all ease-in-out;
+  background-color: #eee;
 
   &:active {
     background-color: #ccc;
-    color: #fff;
   }
 
   &:focus {
@@ -34,17 +34,17 @@ type PaginationProps = {
 
 export default function Pagination({ current, changeOffset }: PaginationProps) {
   const back = () => {
-    changeOffset('back');
+    changeOffset("back");
   };
 
   const forth = () => {
-    changeOffset('forth');
+    changeOffset("forth");
   };
 
   return (
     <Nav>
-      <NavButton onClick={back}>{'<'}</NavButton>第{current + 1}页
-      <NavButton onClick={forth}>{'>'}</NavButton>
+      <NavButton onClick={back}>{"<"}</NavButton>第{current + 1}页
+      <NavButton onClick={forth}>{">"}</NavButton>
     </Nav>
   );
 }

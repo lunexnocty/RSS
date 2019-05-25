@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import Layout from "../components/layout/";
 import Pagination from "../components/pagination";
 import Swal from "sweetalert2";
 import api, { Source } from "../shared/api/source";
-
+import { LoginContext } from "../context/login";
 type AvailabilityProps = {
   availabile: boolean;
 };
@@ -31,7 +31,7 @@ const Availability = styled.span<AvailabilityProps>`
   font-family: sans-serif;
   font-weight: bold;
   padding: 5px 1rem;
-  border-radius: 1rem;
+  border-radius: 5px;
   color: #fff;
   background-color: ${props => (props.availabile ? "#9ccc65" : "#e91e63")};
 `;
@@ -40,12 +40,16 @@ export default function Index() {
   const [sources, setSources] = useState<Source[]>([]);
   const [page, setPage] = useState(0);
   const [filter, setFilter] = useState(false);
+  const isLoggedIn = useContext(LoginContext);
 
   useEffect(() => {
     const getSources = async () => {
       const enable = filter ? 1 : -1;
       const res = await api.search({ page, enable });
-      if (res.status !== 400) {
+      if (res.status === 401) {
+        Swal.fire("没有更多数据");
+        setPage(page - 1);
+      } else if (res.status !== 400) {
         Swal.fire({
           type: "error",
           title: "出错了",
@@ -58,8 +62,10 @@ export default function Index() {
         setSources(res.rst);
       }
     };
-    getSources();
-  }, [page, filter]);
+    if (isLoggedIn) {
+      getSources();
+    }
+  }, [page, filter, isLoggedIn]);
 
   const changePage = (action: string) => {
     if (action === "forth") {
