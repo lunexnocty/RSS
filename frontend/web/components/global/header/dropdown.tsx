@@ -1,12 +1,12 @@
-import styled from 'styled-components'
-import Link from 'next/link'
-import auth from '../../../shared/utils/auth'
-import {userContext} from '../../../context/user'
-import {useContext} from 'react'
+import styled from "styled-components";
+import Link from "next/link";
+import auth from "../../../shared/utils/auth";
+import { userContext } from "../../../context/user";
+import { useContext } from "react";
 
 const DropdownWrapper = styled.ul`
   position: absolute;
-  bottom: -7rem;
+  bottom: -10rem;
   right: 0;
   font-size: 1rem;
   padding: 10px;
@@ -15,16 +15,28 @@ const DropdownWrapper = styled.ul`
   width: 8rem;
   z-index: 10;
   cursor: pointer;
-`
+`;
 
+const Avatar = styled.img`
+  width: 30%;
+  margin: 0 auto;
+`;
 export default function Dropdown() {
-  const user = useContext(userContext)
+  const user = useContext(userContext);
   return (
     <DropdownWrapper>
+      <li>
+        <Avatar src={user.avatar} />
+      </li>
       <li>{user.name}</li>
       <li>{user.role}</li>
       <li>
         <hr />
+      </li>
+      <li>
+        <Link href={"/settings"}>
+          <a>设置</a>
+        </Link>
       </li>
       <li onClick={() => auth.logout()}>
         <Link href="/signin">
@@ -32,5 +44,5 @@ export default function Dropdown() {
         </Link>
       </li>
     </DropdownWrapper>
-  )
+  );
 }

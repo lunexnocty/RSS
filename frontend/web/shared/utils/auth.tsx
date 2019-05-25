@@ -1,16 +1,16 @@
-import api from '../api'
-import Router from 'next/router'
-import React, { useEffect, useState } from 'react'
-import Cookie from 'js-cookie'
-import {roleMap,UserRole} from './role'
+import api from "../api";
+import Router from "next/router";
+import React, { useEffect, useState } from "react";
+import Cookie from "js-cookie";
+import { roleMap, UserRole } from "./role";
 
 export type RoleID = 1 | 2 | 3;
-export type ResponseStatus = 'success' | 'failed';
+export type ResponseStatus = number;
 
 export const cookieItems = {
-  isloggedIn: 'loggedIn',
-  user: 'user'
-}
+  isloggedIn: "loggedIn",
+  user: "user"
+};
 
 export type SigninFormData = {
   username: string;
@@ -20,7 +20,7 @@ export type SigninFormData = {
 export type SigninFormResponse = {
   status: ResponseStatus;
   user: User | null;
-  info: string;
+  infomation: string;
 };
 
 export type SignupFormData = {
@@ -32,7 +32,7 @@ export type SignupFormData = {
 
 export type SignupFormResponse = {
   status: ResponseStatus;
-  info: string;
+  infomation: string;
 };
 
 export type UserResponse = {
@@ -48,18 +48,18 @@ export type User = {
 };
 
 async function signin({ username, password }: SigninFormData) {
-  return await api.post<SigninFormResponse>('/signin', {
+  return await api.post<SigninFormResponse>("/signin", {
     username,
     password
-  })
+  });
 }
 
 async function signup(data: SignupFormData) {
-  return await api.post<SignupFormResponse>('/signup', data)
+  return await api.post<SignupFormResponse>("/signup", data);
 }
 
-function getProfile():User {
-  return Cookie.getJSON(cookieItems.user) || {}
+function getProfile(): User {
+  return Cookie.getJSON(cookieItems.user) || {};
 }
 
 function setProfile(userData: UserResponse) {
@@ -68,33 +68,33 @@ function setProfile(userData: UserResponse) {
     name: userData.username,
     avatar: userData.avatar,
     role: roleMap[userData.role_id]
-  }
-  Cookie.set(cookieItems.user, user)
+  };
+  Cookie.set(cookieItems.user, user);
 }
 
 export function isloggedIn() {
-  const token = Cookie.get(cookieItems.user)
-  return !!token
+  const token = Cookie.get(cookieItems.user);
+  return !!token;
 }
 
 export function logout() {
-  Cookie.remove(cookieItems.user)
-  Router.replace('/signin')
+  Cookie.remove(cookieItems.user);
+  Router.replace("/signin");
 }
 
 export function WithAuth({ children }: any) {
-  const [loading, set] = useState(false)
+  const [loading, set] = useState(false);
   if (process.browser) {
     useEffect(() => {
       if (!isloggedIn()) {
-        Router.push('/signin')
+        Router.push("/signin");
       } else {
-        setTimeout(() => set(true), 200)
+        setTimeout(() => set(true), 200);
       }
-    })
+    });
   }
 
-  return <>{loading ? { ...children } : ''}</>
+  return <>{loading ? { ...children } : ""}</>;
 }
 export default {
   signin,
@@ -103,4 +103,4 @@ export default {
   signup,
   logout,
   isloggedIn
-}
+};
