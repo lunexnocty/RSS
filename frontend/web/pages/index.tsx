@@ -47,7 +47,7 @@ export default function Index() {
       const enable = filter ? 1 : -1;
       const res = await api.search({ page, enable });
       if (res.status === 401) {
-        Swal.fire("没有更多数据");
+        Swal.fire({ text: "没有更多数据", heightAuto: false });
         setPage(page - 1);
       } else if (res.status !== 400) {
         Swal.fire({
