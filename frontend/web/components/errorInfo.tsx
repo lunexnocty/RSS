@@ -8,7 +8,6 @@ const ErrorInfo = styled.span`
   max-width: 20rem;
   text-align: left;
   word-break: break-word;
-  margin-bottom: 1rem;
 `;
 
 export default ErrorInfo;

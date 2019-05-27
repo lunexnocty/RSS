@@ -44,7 +44,7 @@ a {
 
 `;
 
-const Flex = styled.div`
+export const Flex = styled.div`
   display: flex;
   position: relative;
   flex-grow: 1;

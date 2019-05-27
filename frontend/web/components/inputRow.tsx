@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useState } from 'react';
 
-const InputWrapper = styled.li`
+export const InputWrapper = styled.li`
   width: 80%;
   margin: 0 auto 2rem;
   height: 1.6rem;

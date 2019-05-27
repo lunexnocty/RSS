@@ -13,8 +13,8 @@ export default function Protected({ children }: any) {
       } else {
         setTimeout(() => set(true), 200);
       }
-    });
+    }, [isloggedIn]);
   }
 
-  return <>{loading ? { ...children } : ''}</>;
+  return <>{loading && <>{children}</>}</>;
 }

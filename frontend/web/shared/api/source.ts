@@ -9,7 +9,7 @@ export type Source = {
   [key: string | number]: any;
 };
 
-interface SearchResponse extends BasicResponse {
+interface SourceResponse extends BasicResponse {
   rst: Source[];
 }
 type SearchProps = {
@@ -17,7 +17,7 @@ type SearchProps = {
   enable: 1 | -1;
 };
 export async function search(props: SearchProps) {
-  return await api.get<SearchResponse>('/sources', props);
+  return await api.get<SourceResponse>('/sources', props);
 }
 
 export default {

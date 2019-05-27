@@ -2,9 +2,9 @@ import auth from '../shared/utils/auth';
 import { useState } from 'react';
 import styled from 'styled-components';
 import WithBackground from '../components/layout/background';
-import InputRow from '../components/inputRow';
+import InputRow, { InputWrapper } from '../components/inputRow';
 import Router from 'next/router';
-import SubmitButton from '../components/SubmitButton';
+import SubmitButton from '../components/submitButton';
 import { useSpring, animated } from 'react-spring';
 import ErrorInfo from '../components/errorInfo';
 import Link from 'next/link';
@@ -68,9 +68,11 @@ export default function SignIn() {
             label="密码"
             onChange={e => onInput('password', e.target.value)}
           />
-          <li>
-            <ErrorInfo>{state.error}</ErrorInfo>
-          </li>
+          {state.error && (
+            <InputWrapper>
+              <ErrorInfo>{state.error}</ErrorInfo>
+            </InputWrapper>
+          )}
           <li>
             <SubmitButton onclick="submit">登录</SubmitButton>
           </li>
