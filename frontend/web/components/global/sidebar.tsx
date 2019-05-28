@@ -17,6 +17,7 @@ type LinkItemProps = {
 const SidebarLinkList = styled.ul`
   position: sticky;
   margin-top: 1rem;
+  top: 1rem;
 `;
 
 const LinkItem = styled.li<LinkItemProps>`

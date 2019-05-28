@@ -37,11 +37,10 @@ export type StateResponse = {
   update_time: string;
 };
 
-export type Status = {};
-interface SearchResponse extends BasicResponse {
-  rst: RSTResponse;
-  source: SourceResponse;
-  state: StateResponse;
+export interface SearchResponse extends BasicResponse {
+  rst?: RSTResponse;
+  source?: SourceResponse;
+  state?: StateResponse;
 }
 
 export async function search(id: number) {

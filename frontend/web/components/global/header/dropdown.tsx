@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import Link from 'next/link';
-import auth from '../../../shared/utils/auth';
-import { userContext } from '../../../context/user';
-import { useContext } from 'react';
+import styled from "styled-components";
+import Link from "next/link";
+import auth from "../../../shared/utils/auth";
+import { userContext } from "../../../context/user";
+import { useContext } from "react";
 
 const DropdownWrapper = styled.ul`
   position: absolute;
@@ -18,7 +18,8 @@ const DropdownWrapper = styled.ul`
 `;
 
 const Avatar = styled.img`
-  width: 30%;
+  width: 48px;
+  height: 48px;
   margin: 0 auto;
 `;
 export default function Dropdown() {
@@ -34,7 +35,7 @@ export default function Dropdown() {
         <hr />
       </li>
       <li>
-        <Link href={'/settings'}>
+        <Link href={"/settings"}>
           <a>设置</a>
         </Link>
       </li>
